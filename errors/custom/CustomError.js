@@ -1,0 +1,15 @@
+/**
+ * @module errors/CustomError
+ * @description customError Class
+ */
+
+module.exports = function CustomError(name, message, statusCode, errorCode) {
+  Error.captureStackTrace(this, this.constructor);
+
+  this.name = name || 'CustomError';
+  this.message = message || 'Custom Error without message';
+  this.statusCode = statusCode || 400;
+  this.errorCode = errorCode || 400;
+};
+
+require('util').inherits(module.exports, Error);

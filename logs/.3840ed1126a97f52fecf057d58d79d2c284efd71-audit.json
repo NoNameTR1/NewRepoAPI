@@ -1,0 +1,34 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 5
+    },
+    "auditLog": "C:\\Users\\emrej\\Desktop\\cpp\\project\\backend\\logs\\.3840ed1126a97f52fecf057d58d79d2c284efd71-audit.json",
+    "files": [
+        {
+            "date": 1604955963775,
+            "name": "C:\\Users\\emrej\\Desktop\\cpp\\project\\backend\\logs\\info-2020-11-10.log",
+            "hash": "a6a78b9d77bddc3a81a253d095f86be5"
+        },
+        {
+            "date": 1605079467589,
+            "name": "C:\\Users\\emrej\\Desktop\\cpp\\project\\backend\\logs\\info-2020-11-11.log",
+            "hash": "eaddd899b17d58084078344aef3df166"
+        },
+        {
+            "date": 1605164747368,
+            "name": "C:\\Users\\emrej\\Desktop\\cpp\\project\\backend\\logs\\info-2020-11-12.log",
+            "hash": "a60250fac8390fd0d95f8f55842bc2f1"
+        },
+        {
+            "date": 1605249931745,
+            "name": "C:\\Users\\emrej\\Desktop\\cpp\\project\\backend\\logs\\info-2020-11-13.log",
+            "hash": "f63b036decddbf61a9b774f532fc07ed"
+        },
+        {
+            "date": 1605437685328,
+            "name": "C:\\Users\\emrej\\Desktop\\cpp\\project\\backend\\logs\\info-2020-11-15.log",
+            "hash": "ce376e8287076e28e51a67339c436b25"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 
 Backend:
 Hello, while writing the project, I chose to write a complex structure that is suitable for a slightly larger structure instead of adding a classic structure, controllers and routers.
-The reason of this; While completing the ready-made challenge, I thought that I would create the basis of my own project.
+The reason of this; While completing the challenge, I thought that I would create the basis of my own project.
 For this reason, it may make you think that there is too much unnecessary code for this challenge. But all so that it is better and more easily expandable.
 
 The reason for using plugins instead of writing a lot of functions under the 'Services' or 'Controllers' folder:
@@ -28,7 +28,7 @@ Each folder must have an index.js. For easier accessibility
 Api: here, you can add routes and the controllers you want.
 Plugins : If you want to add a feature to project; create a folder and write your service class extending $Service ofc.
 Services : It's where functions are stored for services. For example : membership's functions : getCurrentUser() ..
-Errors :  A special place to debug
+Errors :  A special place to catch eror.
 
 Frontend: 
 
@@ -58,5 +58,6 @@ Thanks for reading.
 the time I spent coding this project : 3 days ( 5 hour per day) 
 
 
-You can install : npm install & npm start
+You can install backend and frontend : npm install & npm start
+
  

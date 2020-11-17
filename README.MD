@@ -1,7 +1,7 @@
 
-Backend:
+## Backend:
 Hello, while writing the project, I chose to write a complex structure that is suitable for a slightly larger structure instead of adding a classic structure, controllers and routers.
-The reason of this; While completing the ready-made challenge, I thought that I would create the basis of my own project.
+The reason of this; While completing the challenge, I thought that I would create the basis of my own project.
 For this reason, it may make you think that there is too much unnecessary code for this challenge. But all so that it is better and more easily expandable.
 
 The reason for using plugins instead of writing a lot of functions under the 'Services' or 'Controllers' folder:
@@ -23,14 +23,15 @@ I putted them for future additions
 I tried to write a comment line as much as possible
 I hope you like.
 
-Folder structure : 
-Each folder must have an index.js. For easier accessibility
+### Folder structure : 
+If it's necessary, each folder must have an index.js for easier accessibility. 
 Api: here, you can add routes and the controllers you want.
 Plugins : If you want to add a feature to project; create a folder and write your service class extending $Service ofc.
 Services : It's where functions are stored for services. For example : membership's functions : getCurrentUser() ..
-Errors :  A special place to debug
+Errors :  A special place to catch error.
+Config/security :  will be used as middleware folder
 
-Frontend: 
+## Frontend: 
 
 your pdf file says "Do not use ReactJS, VueJS etc." but I used Vue + Vuex because you allowed it when we talked in Google Meet.
 Therefore, I can easily express say that; it was easier than writing vanillajs of course. 
@@ -43,7 +44,7 @@ Store : Part I reserved for Vuex events. If you haven't used Vuex, in short, Rea
 
 What did I do for responsive? 
 
-- For Responsive, I was going to use the Dimitry technique + breakpoint technique, which is a similar technique I have used before, but I realized and used that a library was created on it.
+- For Responsive, I was going to use the Dimitry technique + breakpoint technique, which is a similar technique I have used before, but I realized and used that a library was created on it (structurally the same) 
 
 
 I have literally not been using css and vuejs for almost 3 months.
@@ -58,5 +59,6 @@ Thanks for reading.
 the time I spent coding this project : 3 days ( 5 hour per day) 
 
 
-You can install : npm install & npm start
+You can install backend and frontend : npm install & npm start
+
  

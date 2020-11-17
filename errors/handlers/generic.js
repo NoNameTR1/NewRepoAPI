@@ -28,7 +28,7 @@ export function genericErrorHandler(error, exposeStackTrace) {
   } else {
     const errorResponse = {
       status: error.statusCode || 500,
-      message: error.message,
+      message: error.message || generalError.message,
       code: error.errorCode || generalError.errorCode,
       stackTrace: error.stack,
     };

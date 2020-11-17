@@ -1,6 +1,5 @@
 const ErrorCodes = {
   Default: 'xZG1000',
-
   // 1 AUTH
   // 11 REGISTER
   // AuthEmailAlreadyExistsError: 'xZG1101',

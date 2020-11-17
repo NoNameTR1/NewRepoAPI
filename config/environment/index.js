@@ -2,12 +2,12 @@
 /*eslint no-process-env:0*/
 
 const path = require('path');
-const _ =  require('lodash');
+const _ = require('lodash');
 
 // All configurations will extend these options
 // ============================================
 var all = {
- // env: process.env.NODE_ENV || 'development',
+  // env: process.env.NODE_ENV || 'development',
 
   // Root path of server
   root: path.normalize(`${__dirname}/../..`),
@@ -26,7 +26,4 @@ var all = {
 
 // Export the config object based on the NODE_ENV
 // ==============================================
-module.exports = _.merge(
-  all,
-  require('./shared')
-);
+module.exports = _.merge(all, require('./shared'));

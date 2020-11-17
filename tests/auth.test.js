@@ -4,11 +4,8 @@ import container from '../plugins';
 
 import { basename } from 'path';
 
-const chai = require('chai');
-const asserttype = require('chai-asserttype');
-chai.use(asserttype);
+import { expect } from '../test_utils/chai';
 
-const expect = chai.expect;
 
 /**
  * @returns {Filename} to Console

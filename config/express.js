@@ -62,6 +62,7 @@ export default function (app) {
         // Sending this, we don't want anyone to
         // guess what's wrong if they called our API
         // without a Client-Id
+        
         return res.status(400).send();
       }
     }

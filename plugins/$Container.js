@@ -15,8 +15,6 @@ export class $Container {
   membershipService = new ZGMembershipService();
   albumService = new ZGAlbumService();
 
-  listeners = [];
-
   log(...msgs) {
     console.log(
       `\x1b[34m${new Date().toLocaleString()}\x1b[0m`,
@@ -31,20 +29,6 @@ export class $Container {
         })
         .join('/ ')
     );
-  }
-
-  registerListener(listener) {
-    this.listeners.push(listener);
-  }
-
-  unregisterListener(listener) {
-    this.listeners.splice(this.listeners.indexOf(listener), 1);
-  }
-
-  async emit(to, name, payload) {
-    for (let listener of this.listeners) {
-      await listener(to, name, payload);
-    }
   }
 
   /**

@@ -8,8 +8,7 @@
     "lint": "eslint \"**/*.js\"",
     "lint:watch": "esw -w --color",
     "clean:logs": "rm logs/*",
-    "clean:cache": "npm cache clean",
-    "test": "npm run link-modules && mocha --require @babel/register tests/*.js --reporter spec --timeout 60000 --exit"
+    "test": "mocha --require @babel/register tests/*.js --reporter spec --timeout 60000 --exit"
   },
   "husky": {
     "hooks": {
@@ -44,7 +43,6 @@
     "express": "^4.17.1",
     "express-useragent": "^1.0.15",
     "express-validation": "^3.0.6",
-    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
     "prettier": "^2.1.2",
@@ -60,7 +58,6 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/register": "^7.12.1",
     "chai": "^4.2.0",
-    "chai-as-promised": "^7.1.1",
     "eslint": "^7.13.0",
     "husky": "^4.3.0",
     "link-module-alias": "^1.2.0",

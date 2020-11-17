@@ -3,7 +3,7 @@ module.exports = (container, log) => {
     login: async () => {
       log('Login test');
       let user = await container.membershipService.loginHandler.login({
-        ere: '123',
+        username: '123',
       });
       console.log(user);
       return user;

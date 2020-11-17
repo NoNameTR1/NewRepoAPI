@@ -24,12 +24,11 @@ I tried to write a comment line as much as possible
 I hope you like.
 
 ### Folder structure : 
-If it's necessary, each folder must have an index.js for easier accessibility. 
+Each folder must have an index.js. For easier accessibility
 Api: here, you can add routes and the controllers you want.
 Plugins : If you want to add a feature to project; create a folder and write your service class extending $Service ofc.
 Services : It's where functions are stored for services. For example : membership's functions : getCurrentUser() ..
-Errors :  A special place to catch error.
-Config/security :  will be used as middleware folder
+Errors :  A special place to catch eror.
 
 ## Frontend: 
 

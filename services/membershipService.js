@@ -1,3 +1,5 @@
+import {User} from '../models';
+
 export async function login(username, password) {
   if (username === 'zg' && password === '123') {
     return {
@@ -12,4 +14,14 @@ export async function login(username, password) {
     };
   }
   return false;
+}
+
+export async function getUserById(id){
+  const user = await User.get({id: id});
+  return user;
+}
+
+export async function isUsernameExist(username) {
+  const record = await User.get({username:username});
+  return record;
 }

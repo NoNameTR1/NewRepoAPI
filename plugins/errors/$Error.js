@@ -4,6 +4,7 @@ import { getErrorCode, getStatusCode } from './utils/utils';
  * Base Error
  */
 class $Error extends Error {
+
   /**
    * @type {String}
    */
@@ -127,6 +128,9 @@ class $Error extends Error {
    * @abstract
    * @return {String}
    */
+  onMessage() {
+    return 'This error has been threw intentionally.';
+  }
 }
 
 export default $Error;

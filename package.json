@@ -1,10 +1,9 @@
 {
   "name": "project",
-  "description": "ZG challange",
+  "description": "Rooter",
   "main": "app.js",
   "scripts": {
-    "start": "npm run link-modules && nodemon --exec babel-node --presets=@babel/preset-env  app.js",
-    "link-modules": "link-module-alias",
+    "start": "nodemon --exec babel-node --presets=@babel/preset-env  app.js",
     "lint": "eslint \"**/*.js\"",
     "lint:watch": "esw -w --color",
     "clean:logs": "rm logs/*",
@@ -31,22 +30,30 @@
     "~errors": "errors",
     "~plugins": "plugins",
     "~logs": "logs",
-    "~services": "services"
+    "~services": "services",
+    "~models": "models"
   },
   "dependencies": {
+    "async-redis": "^1.1.7",
     "axios": "^0.21.0",
     "babel-eslint": "^10.1.0",
     "body-parser": "^1.19.0",
+    "cassandra-driver": "^4.6.1",
     "chai-asserttype": "^1.0.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-useragent": "^1.0.15",
     "express-validation": "^3.0.6",
+    "link-module-alias": "^1.2.0",
+    "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
+    "passport-jwt": "^4.0.0",
     "prettier": "^2.1.2",
     "semver-compare": "^1.0.0",
+    "socket.io": "^3.0.4",
+    "socket.io-redis": "^6.0.1",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.0"
   },
@@ -60,7 +67,6 @@
     "chai": "^4.2.0",
     "eslint": "^7.13.0",
     "husky": "^4.3.0",
-    "link-module-alias": "^1.2.0",
     "lint-staged": "^10.5.1",
     "mocha": "^8.2.1"
   }

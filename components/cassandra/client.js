@@ -1,5 +1,6 @@
 const cassandra = require('cassandra-driver');
 const distance = cassandra.types.distance;
+const Mapper = cassandra.mapping.Mapper;
 
 const options = {
   cloud: {
@@ -13,16 +14,18 @@ const options = {
       [distance.remote]: 1,
     },
   },
+  keyspace:'server'
 };
 
 const client = new cassandra.Client(options);
 
 async function rows() {
-  const rs = await client.execute('SELECT * FROM system.local');
+  const rs = await client.execute('SELECT * FROM users');
   console.log(`Your cluster returned ${rs.rowLength} row(s)`);
 }
 
 rows();
+
 
 // client.on('log', (level, loggerName, message) => {
 //   console.log(`${level} - ${loggerName}:  ${message}`);

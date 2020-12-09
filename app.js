@@ -13,12 +13,20 @@ const env = app.get('env');
 const isDevelopment = env === 'development';
 const isProduction = env === 'production';
 
+const socketio = require('socket.io')(server);
 app.set('port', port);
+
+require('./aliases');
+
 
 require('./config/express').default(app);
 
 // Mount api routes
 require('./routes').default(app);
+
+require('./config/socket').default(socketio, app);
+
+require('./config/database');
 
 app.use((err, req, res) => {
   // Log to file if we're not in local.
@@ -47,7 +55,7 @@ container
   .initialize()
   .then(() => {
     server.listen(port, () => {
-      console.log('Zingat challange port : ' + port);
+      console.log('Service is working on : ' + port);
     });
   })
   .catch((e) => {

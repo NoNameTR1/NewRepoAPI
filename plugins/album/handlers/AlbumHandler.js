@@ -1,4 +1,4 @@
-import { albumService } from '~services';
+import { albumService } from '../../../services';
 
 class AlbumHandler {
   /**

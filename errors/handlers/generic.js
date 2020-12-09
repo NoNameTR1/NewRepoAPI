@@ -1,7 +1,7 @@
 import expressValidation from 'express-validation';
 import { validationErrorHandler } from './validation';
 import { ErrorCodes } from '../';
-import $Error from '~plugins/errors/$Error';
+import $Error from '../../plugins/errors/$Error';
 
 // as befits the name implies. Seems like little complex (at first glance) but actually easy to understand.
 

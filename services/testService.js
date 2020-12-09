@@ -9,3 +9,7 @@ export async function asGeneral() {
   const query = await csdra.execute('SELECT * from system_schema');
   return query;
 }
+
+export async function getUser(){
+  
+}

@@ -1,15 +1,14 @@
-import { membershipService } from '~services';
+import { membershipService } from '../../../services';
 
-class MembershipLoginHandler {
+class userHandler {
   /**
    * @param req
    * @returns {Boolean<true/false>}
    */
-  async getCurrenUse(req) {
-    const { username, password } = req;
-    const result = membershipService.login(username, password);
+  async getUserById(id) {
+    const result = await membershipService.getUserById(id);
     return result;
   }
 }
 
-export default MembershipLoginHandler;
+export default userHandler;

@@ -24,4 +24,13 @@ describe('Auth', () => {
     });
     expect(data).to.be.an('object');
   });
+  
+  // Not tested for now.
+  it('register', async () => {
+    const data = await container.membershipService.registerHandler.register({
+
+    });
+    expect(data).to.be.an('object');
+  });
 });
+

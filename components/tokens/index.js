@@ -2,19 +2,19 @@ import _ from 'lodash';
 import fs from 'fs';
 import jwt from 'jsonwebtoken';
 import randToken from 'rand-token';
-import config from '~config/environment';
+import config from '../../config/environment';
 import { redisAuthHelper } from '../redis';
 
 function prepareJwtToken(user) {
   const privateKey = fs.readFileSync(
-    `${config.root}/keys/private-local.pem`,
+    `${config.root}/keys/private_key.pem`,
     'utf8',
   );
 
   const signOptions = {
-    issuer: 'AlienBrokerAuth v1.0',
+    issuer: 'EmreKasgurAuth v1.0',
     subject: user.email,
-    audience: 'https://app.alienbroker.com',
+    audience: 'http://localhost:4000',
     expiresIn: 60 * 60 * 12,
     algorithm: 'RS256',
   };
@@ -23,15 +23,13 @@ function prepareJwtToken(user) {
   // user password in the token so we pick only the email and id
   const body = {
     id: user.id,
-    uid: user.uid,
-    fullName: user.fullName,
-    email: user.email,
-    emailVerified: user.emailVerified,
+    name: user.name,
     displayName: user.displayName,
-    avatar: user.avatar,
-    authorization: {
-      roles: _.map(user.roles, item => item.key),
-    },
+    email: user.email,
+    emailVerified: user.verified,
+    // authorization: {
+    //   roles: _.map(user.roles, item => item.key),
+    // },
     // corporation: {
     //   id: user.corporation.id,
     //   name: user.corporation.name,
@@ -50,8 +48,12 @@ function prepareJwtToken(user) {
 
 function prepareRefreshToken(user) {
   const refreshToken = randToken.uid(256);
-  redisAuthHelper.storeRefreshToken(user.uid, refreshToken);
-
+  
+  try{
+    redisAuthHelper.storeRefreshToken(`${user.id}`, refreshToken);
+  }catch(err){
+    console.log(err);
+  }
   return refreshToken;
 }
 

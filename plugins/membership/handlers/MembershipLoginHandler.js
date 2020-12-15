@@ -1,6 +1,12 @@
 import { membershipService } from '../../../services';
 import AuthEmailAlreadyExistsError from '../../errors/models/AuthEmailAlreadyExistsError';
 import AuthUsernameAlreadyExistsError from '../../errors/models/AuthUsernameAlreadyExistsError';
+import GlobUserNotFoundError from '../../errors/models/GlobUserNotFoundError';
+import AuthInvalidCredentialsError from '../../errors/models/AuthInvalidCredentialsError';
+
+import tokens from '../../../components/tokens';
+
+import bcrypt from 'bcrypt';
 
 class MembershipLoginHandler {
   /**
@@ -9,43 +15,34 @@ class MembershipLoginHandler {
    */
   async login(req) {
     const { username, password } = req;
-    const result = membershipService.login(username, password);
+    const user = await membershipService.getUserByUsername(username, '*');
+    const data = {};
+    if (user) {
+      const compared = await bcrypt.compareSync(password, user.password);
 
-    return result;
-  }
-  async register(name, username, password, email) {
-    // Check username existence
-    if (await membershipService.isUsernameExist(username)) {
-      throw new AuthUsernameAlreadyExistsError(username);
+      if (compared === true) {
+        delete user.password;
+
+        data['currentUser'] = user;
+        data['isAuthenticated'] = true;
+
+        const accessToken = tokens.prepareJwtToken(data.currentUser);
+        data['accessToken'] = accessToken;
+
+        const refreshToken = tokens.prepareRefreshToken(data.currentUser);
+        data['refreshToken'] = refreshToken;
+
+        return data;
+      } else {
+        throw new AuthInvalidCredentialsError({ email: username, password });
+      }
+    } else {
+      throw new GlobUserNotFoundError(username);
     }
-    // Check email existence
-    if (await membershipService.isEmailExists(email)) {
-      throw new AuthEmailAlreadyExistsError(email);
-    }
 
-    // User Creation
-    const user = await membershipService.addUser({
-      name,
-      username,
-      email,
-      password,
-      email_verified: this.container.testing(),
-      verified_at: this.container.testing() ? new Date() : null,
-      created_at: new Date(),
-    });
+    // const result = membershipService.login(username, hashPassword);
 
-    /* if (!this.container.testing()) {
-      // Email verification
-      const verification = await membershipService.addVerificationCode(email, user.uid);
-      let verificationEmail = new Signup(
-        user.email,
-        user.id,
-        user.fullName,
-        verification.code,
-      );
-      verificationEmail.send();
-    }*/
-    return user;
+    // return result;
   }
 }
 

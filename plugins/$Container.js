@@ -1,5 +1,4 @@
 import ZGMembershipService from './membership/ZGMembershipService';
-import ZGAlbumService from './album/ZGAlbumService';
 import UserService from './user/UserService';
 
 const fs = require('fs').promises;
@@ -14,7 +13,6 @@ export class $Container {
    * @type {ZGMembershipService}
    */
   membershipService = new ZGMembershipService();
-  albumService = new ZGAlbumService();
   userService = new UserService();
 
 

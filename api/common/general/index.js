@@ -1,12 +1,9 @@
 import express from 'express';
-import * as AlbumController from './album.controller';
-//import * as authLimiter from './general.limiter';
+// import ServerController from './server.controller';
 
 const router = express.Router();
 
-router.get('/allAlbums', AlbumController.allAlbums);
-router.get('/myalbums/:id', AlbumController.myAlbums);
+// router.get('/servers/status', ServerController.status);
 
-router.get('/album/:id', AlbumController.albumById);
 
 module.exports = router;

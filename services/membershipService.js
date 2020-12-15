@@ -1,27 +1,53 @@
-import {User} from '../models';
+import { User } from '../models';
+import client from '../components/cassandra/client';
 
-export async function login(username, password) {
-  if (username === 'zg' && password === '123') {
-    return {
-      id: 1,
-      isAuthenticated: true,
-      accessToken: null,
-      refreshToken: null,
-      currentUser: { email: 'emrejx.abi@gmail.com' },
-      roles: [0],
-      isBusy: false,
-      error: null,
-    };
-  }
-  return false;
+/**
+ *
+ * @param {<String>} username
+ * @param {<Encryped_string>} password
+ */
+
+export async function getUserByUsername(username, args="*"){
+  const query = `SELECT ${args} FROM server.users WHERE username='${username}' ALLOW FILTERING;`;
+  const user = await client.execute(query);
+
+  return user.rows[0];
 }
 
-export async function getUserById(id){
-  const user = await User.get({id: id});
+/**
+ *
+ * @param {Int} id
+ */
+export async function getUserById(id) {
+  const user = await User.get({ id: id });
   return user;
 }
 
+/**
+ *
+ * @param {<String>} username
+ */
 export async function isUsernameExist(username) {
-  const record = await User.get({username:username});
+  const query = `SELECT username from server.users WHERE username='${username}' ALLOW FILTERING;`;
+  const record = await client.execute(query);
   return record;
+}
+
+/**
+ *
+ * @param {*} email
+ */
+export async function isEmailExists(email) {
+  const query = `SELECT email from server.users WHERE email='${email}' ALTER FILTERING;`;
+  const record = await client.execute(query);
+  return record;
+}
+
+export async function addUser(data) {
+  const { name, username, email, password, token, verified } = data;
+
+  const query = `INSERT INTO server.users(id, created_at, email, name, password, "token", username, verified) VALUES (uuid(), now(), '${email}', '${name}', '${password}', '${token}', '${username}', ${verified});`;
+  const newUser = await client.execute(query);
+
+  return newUser;
 }

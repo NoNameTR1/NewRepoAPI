@@ -9,11 +9,6 @@
     "clean:logs": "rm logs/*",
     "test": "mocha --require @babel/register tests/*.js --reporter spec --timeout 60000 --exit"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test && lint-staged"
-    }
-  },
   "lint-staged": {
     "./**/*.{js,css}": [
       "eslint",
@@ -22,6 +17,11 @@
     ]
   },
   "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && lint-staged"
+    }
+  },
   "_moduleAliases": {
     "~root": ".",
     "~api": "api",
@@ -37,6 +37,7 @@
     "async-redis": "^1.1.7",
     "axios": "^0.21.0",
     "babel-eslint": "^10.1.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cassandra-driver": "^4.6.1",
     "chai-asserttype": "^1.0.5",
@@ -49,8 +50,10 @@
     "module-alias": "^2.2.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "prettier": "^2.1.2",
+    "rand-token": "^1.0.1",
     "semver-compare": "^1.0.0",
     "socket.io": "^3.0.4",
     "socket.io-redis": "^6.0.1",

@@ -9,6 +9,11 @@ class userHandler {
     const result = await membershipService.getUserById(id);
     return result;
   }
+
+  async getUserByName(name) {
+    const result = await membershipService.getUserByName(name);
+    return result;
+  }
 }
 
 export default userHandler;
